@@ -1,0 +1,83 @@
+import GiraDelBuenComer.*
+
+describe "Tests de comidas"{
+	var deglutidorBuenaOnda = new Deglutidor(21,true)
+	var criticoBuenaOnda = new Critico(2,40)
+	var deglutidorMalaOnda = new Deglutidor(21,false)
+	var criticoMenosHoras = new Critico(2,18)
+	
+	
+	var chefProfesor = new Chef()
+	var chefFamoso = new Chef()
+	var uruguay = new Lugar(false)
+	
+	var restComun = new Restaurante(4,chefProfesor)
+	var restEtnico = new RestauranteEtnico(1,chefFamoso,uruguay)
+	var bodegon = new Bodegon(3) 
+	
+	var gira = new Gira()
+	
+	fixture{
+		escuela.agregarEstudiante(deglutidorMalaOnda) 
+		escuela.agregarEstudiante(deglutidorBuenaOnda)
+		escuela.agregarEstudiante(criticoBuenaOnda)
+		escuela.agregarEstudiante(criticoMenosHoras)
+		escuela.agregarProfesor(chefProfesor)
+		gira.agregarLugar(restComun)
+		gira.agregarLugar(bodegon)
+			
+	}
+	
+	method sumarGira(){
+		gira.sumarA(deglutidorBuenaOnda)
+		gira.sumarA(criticoBuenaOnda)
+	}
+    test "Puedo agregar deglutidor buena onda a la gira "{
+    	gira.sumarA(deglutidorBuenaOnda)
+    	assert.that(gira.personas().contains(deglutidorBuenaOnda))
+    }
+    test "Puedo agregar critico buena onda a la gira "{
+    	gira.sumarA(criticoBuenaOnda)
+    	assert.that(gira.personas().contains(criticoBuenaOnda))
+    }
+     test "No puedo agregar a deglutidor mala onda a la gira "{
+    	assert.throwsExceptionLike(noPuedeIrDeGira, { gira.sumarA(deglutidorMalaOnda)})
+    }
+     test "No puedo agregar critico menos horas a la gira "{
+    	assert.throwsExceptionLike(noPuedeIrDeGira, { gira.sumarA(criticoMenosHoras)})
+    }
+	test "Restaurante comun vale la pena para la gira"{
+    	self.sumarGira() 
+		assert.that(restComun.valeLaPena(gira))
+	}
+	test "Bodegon vale la pena para la gira"{
+    	self.sumarGira() 
+		assert.that(restComun.valeLaPena(bodegon))
+	}
+	test "Restaurante etnico no vale la pena para la gira"{
+    	self.sumarGira() 
+		assert.notThat(restEtnico.valeLaPena(gira))
+	}
+	
+    test "Gira con restaurante etnico no vale la pena"{
+    	self.sumarGira() 
+    	gira.agregarLugar(restEtnico)
+    	assert.notThat(gira.valeLaPena())
+    }
+    test "Gira vale la pena"{
+    	self.sumarGira() 
+    	assert.that(gira.valeLaPena())
+    }
+    test "Deglutidor sale en la gira y come 2 platos mas"{
+    	self.sumarGira()
+    	gira.realizar()
+    	assert.equals(23, deglutidorBuenaOnda.platos())
+    }
+	
+    test "Critico sale en la gira y come 2 platos mas"{
+    	self.sumarGira()
+    	gira.realizar()
+    	assert.equals(4, criticoBuenaOnda.platos())
+    }
+
+}
