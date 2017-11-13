@@ -3,7 +3,7 @@
 ## Ejercicio integrador
 **Una gira por los mejores restaurantes de la ciudad**
 
-![menu](menuetiopia.jpg)
+![menu](menuetiopia.JPG)
 *Doro Wot, el plato nacional de Etiopía, con vegetales, carne de res y cordero*
 
 Los compañeros de una conocida escuela gastronómica van probando diferente platos de comida, de manera gratuita porque los elaboran ellos mismos, pero tienen la costumbre de salir de gira todas las semanas por diferentes casas de comidas de la ciudad. Algunos son denominados deglutidores, por su voracidad frente a la mesa, y los restantes se definen como críticos culinarios, por su estilo más refinado. Los deglutidores no se vuelven críticos, ni viceversa.
