@@ -1,4 +1,7 @@
 # Gira del buen comer 
+ 
+[![Build Status](https://travis-ci.org/wollok/EjercicioIntegradorGuiaDelBuenComer.svg?branch=master)](https://travis-ci.org/wollok/EjercicioIntegradorGuiaDelBuenComer)
+
 
 ## Ejercicio integrador
 **Una gira por los mejores restaurantes de la ciudad**
